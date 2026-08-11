@@ -1,5 +1,116 @@
 {
-  "generated_at_utc": "not-yet-run",
-  "methodology": "pending first run",
-  "signals": {}
+  "generated_at_utc": "2026-08-11T04:23:27+00:00",
+  "methodology": "EMA20/EMA50 = % price is above/below the 20- and 50-day exponential moving average. TP/SL reference = 52-week high/low of daily closes. R:R = remaining upside % to 52w high divided by remaining downside % to 52w low. Status is mechanical: UPTREND if price is above both EMAs, DOWNTREND if below both, otherwise SIDEWAYS / MIXED. Educational use only, not investment advice.",
+  "signals": {
+    "XLE": {
+      "ticker": "XLE",
+      "label": "Energy Select Sector SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "XLF": {
+      "ticker": "XLF",
+      "label": "Financial Select Sector SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "XLK": {
+      "ticker": "XLK",
+      "label": "Technology Select Sector SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "XLU": {
+      "ticker": "XLU",
+      "label": "Utilities Select Sector SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "XLV": {
+      "ticker": "XLV",
+      "label": "Health Care Select Sector SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "XLY": {
+      "ticker": "XLY",
+      "label": "Consumer Discretionary Select SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "XLP": {
+      "ticker": "XLP",
+      "label": "Consumer Staples Select SPDR",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "SOXX": {
+      "ticker": "SOXX",
+      "label": "iShares Semiconductor ETF",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "SPX": {
+      "ticker": "^GSPC",
+      "label": "S&P 500",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "IXIC": {
+      "ticker": "^IXIC",
+      "label": "Nasdaq Composite",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "NIKKEI": {
+      "ticker": "^N225",
+      "label": "Nikkei 225 (Japan)",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "SXXP": {
+      "ticker": "^STOXX",
+      "label": "STOXX Europe 600",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "SENSEX": {
+      "ticker": "^BSESN",
+      "label": "S&P BSE Sensex (India)",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "KOSPI": {
+      "ticker": "^KS11",
+      "label": "KOSPI Composite (Korea)",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "HSI": {
+      "ticker": "^HSI",
+      "label": "Hang Seng Index (Hong Kong)",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "CSI300": {
+      "ticker": "000300.SS",
+      "label": "CSI 300 Index (China)",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "GOLD": {
+      "ticker": "GLD",
+      "label": "SPDR Gold Shares ETF",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "BTCUSD": {
+      "ticker": "BTC-USD",
+      "label": "Bitcoin / USD",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "ETHUSD": {
+      "ticker": "ETH-USD",
+      "label": "Ethereum / USD",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "ESPO": {
+      "ticker": "ESPO",
+      "label": "VanEck Video Gaming & eSports ETF",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "PSEI": {
+      "ticker": "PSEI.PS",
+      "label": "Philippine Stock Exchange Index",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    },
+    "JILL": {
+      "ticker": "JILL",
+      "label": "J.Jill Inc (tentative - confirm mapping)",
+      "error": "float() argument must be a string or a real number, not 'Series'"
+    }
+  }
 }
