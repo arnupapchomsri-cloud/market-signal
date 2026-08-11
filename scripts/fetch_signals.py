@@ -1,16 +1,6 @@
 #!/usr/bin/env python3
 """
 Daily market signal fetcher.
-
-For each ticker in TICKERS: pulls ~1y of daily closes via yfinance,
-computes EMA20 / EMA50 (standard exponential moving average), 52-week
-high/low (used as TP/SL reference bands), remaining % to each band, and
-a simple R:R ratio. Writes everything to data/signals.json.
-
-Trend status is fully mechanical (no discretionary calls):
-  - price > EMA20 and price > EMA50            -> UPTREND
-  - price < EMA20 and price < EMA50            -> DOWNTREND
-  - anything else (mixed)                       -> SIDEWAYS / MIXED
 """
 
 import json
@@ -18,9 +8,10 @@ import sys
 from datetime import datetime, timezone
 
 try:
+    import pandas as pd
     import yfinance as yf
 except ImportError:
-    print("Missing dependency: pip install yfinance", file=sys.stderr)
+    print("Missing dependency: pip install yfinance pandas", file=sys.stderr)
     raise
 
 TICKERS = {
@@ -53,13 +44,26 @@ def ema(series, span):
     return series.ewm(span=span, adjust=False).mean()
 
 
+def get_close_series(hist):
+    """yfinance sometimes returns a MultiIndex-column DataFrame even for a
+    single ticker (depending on version/args). Normalize to a plain 1-D
+    Series of closes no matter what shape came back."""
+    close = hist["Close"]
+    if isinstance(close, pd.DataFrame):
+        close = close.iloc[:, 0]
+    return close.dropna()
+
+
 def compute_signal(yahoo_ticker, label):
     hist = yf.download(yahoo_ticker, period="1y", interval="1d",
                         progress=False, auto_adjust=False)
-    if hist.empty or len(hist) < 55:
+    if hist.empty:
+        return {"ticker": yahoo_ticker, "label": label, "error": "no_data"}
+
+    close = get_close_series(hist)
+    if len(close) < 55:
         return {"ticker": yahoo_ticker, "label": label, "error": "insufficient_data"}
 
-    close = hist["Close"].dropna()
     price = float(close.iloc[-1])
 
     ema20 = float(ema(close, 20).iloc[-1])
