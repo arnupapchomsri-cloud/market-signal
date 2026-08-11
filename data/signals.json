@@ -1,116 +1,314 @@
 {
-  "generated_at_utc": "2026-08-11T04:23:27+00:00",
+  "generated_at_utc": "2026-08-11T04:29:04+00:00",
   "methodology": "EMA20/EMA50 = % price is above/below the 20- and 50-day exponential moving average. TP/SL reference = 52-week high/low of daily closes. R:R = remaining upside % to 52w high divided by remaining downside % to 52w low. Status is mechanical: UPTREND if price is above both EMAs, DOWNTREND if below both, otherwise SIDEWAYS / MIXED. Educational use only, not investment advice.",
   "signals": {
     "XLE": {
       "ticker": "XLE",
       "label": "Energy Select Sector SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 60.18,
+      "chg1d_pct": 4.66,
+      "ema20_pct": 3.72,
+      "ema50_pct": 5.08,
+      "high_52w": 62.56,
+      "low_52w": 42.125,
+      "up_pct_to_high": 4.0,
+      "down_pct_to_low": 30.0,
+      "rr": 0.13,
+      "status": "UPTREND"
     },
     "XLF": {
       "ticker": "XLF",
       "label": "Financial Select Sector SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 57.81,
+      "chg1d_pct": 0.36,
+      "ema20_pct": 1.69,
+      "ema50_pct": 4.46,
+      "high_52w": 58.0,
+      "low_52w": 47.81,
+      "up_pct_to_high": 0.3,
+      "down_pct_to_low": 17.3,
+      "rr": 0.02,
+      "status": "UPTREND"
     },
     "XLK": {
       "ticker": "XLK",
       "label": "Technology Select Sector SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 186.32,
+      "chg1d_pct": -0.88,
+      "ema20_pct": 2.87,
+      "ema50_pct": 4.04,
+      "high_52w": 198.21,
+      "low_52w": 127.5,
+      "up_pct_to_high": 6.4,
+      "down_pct_to_low": 31.6,
+      "rr": 0.2,
+      "status": "UPTREND"
     },
     "XLU": {
       "ticker": "XLU",
       "label": "Utilities Select Sector SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 43.13,
+      "chg1d_pct": -1.1,
+      "ema20_pct": -3.15,
+      "ema50_pct": -3.92,
+      "high_52w": 47.73,
+      "low_52w": 41.31,
+      "up_pct_to_high": 10.7,
+      "down_pct_to_low": 4.2,
+      "rr": 2.53,
+      "status": "DOWNTREND"
     },
     "XLV": {
       "ticker": "XLV",
       "label": "Health Care Select Sector SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 168.44,
+      "chg1d_pct": 1.67,
+      "ema20_pct": 3.32,
+      "ema50_pct": 5.91,
+      "high_52w": 168.44,
+      "low_52w": 130.29,
+      "up_pct_to_high": 0.0,
+      "down_pct_to_low": 22.6,
+      "rr": 0.0,
+      "status": "UPTREND"
     },
     "XLY": {
       "ticker": "XLY",
       "label": "Consumer Discretionary Select SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 119.67,
+      "chg1d_pct": -0.16,
+      "ema20_pct": 2.97,
+      "ema50_pct": 3.13,
+      "high_52w": 124.52,
+      "low_52w": 105.66,
+      "up_pct_to_high": 4.1,
+      "down_pct_to_low": 11.7,
+      "rr": 0.35,
+      "status": "UPTREND"
     },
     "XLP": {
       "ticker": "XLP",
       "label": "Consumer Staples Select SPDR",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 84.95,
+      "chg1d_pct": -0.2,
+      "ema20_pct": -0.06,
+      "ema50_pct": 0.46,
+      "high_52w": 90.01,
+      "low_52w": 75.6,
+      "up_pct_to_high": 6.0,
+      "down_pct_to_low": 11.0,
+      "rr": 0.54,
+      "status": "SIDEWAYS / MIXED"
     },
     "SOXX": {
       "ticker": "SOXX",
       "label": "iShares Semiconductor ETF",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 529.39,
+      "chg1d_pct": -2.55,
+      "ema20_pct": -0.68,
+      "ema50_pct": -1.37,
+      "high_52w": 655.01,
+      "low_52w": 241.68,
+      "up_pct_to_high": 23.7,
+      "down_pct_to_low": 54.3,
+      "rr": 0.44,
+      "status": "DOWNTREND"
     },
     "SPX": {
       "ticker": "^GSPC",
       "label": "S&P 500",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 7753.1099,
+      "chg1d_pct": -0.06,
+      "ema20_pct": 2.36,
+      "ema50_pct": 3.68,
+      "high_52w": 7757.6401,
+      "low_52w": 6343.7202,
+      "up_pct_to_high": 0.1,
+      "down_pct_to_low": 18.2,
+      "rr": 0.0,
+      "status": "UPTREND"
     },
     "IXIC": {
       "ticker": "^IXIC",
       "label": "Nasdaq Composite",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 26605.3594,
+      "chg1d_pct": -0.32,
+      "ema20_pct": 2.75,
+      "ema50_pct": 3.44,
+      "high_52w": 27093.9004,
+      "low_52w": 20794.6406,
+      "up_pct_to_high": 1.8,
+      "down_pct_to_low": 21.8,
+      "rr": 0.08,
+      "status": "UPTREND"
     },
     "NIKKEI": {
       "ticker": "^N225",
       "label": "Nikkei 225 (Japan)",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 66970.2188,
+      "chg1d_pct": 2.08,
+      "ema20_pct": 2.19,
+      "ema50_pct": 2.21,
+      "high_52w": 72366.3438,
+      "low_52w": 41938.8906,
+      "up_pct_to_high": 8.1,
+      "down_pct_to_low": 37.4,
+      "rr": 0.22,
+      "status": "UPTREND"
     },
     "SXXP": {
       "ticker": "^STOXX",
       "label": "STOXX Europe 600",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 660.45,
+      "chg1d_pct": 0.03,
+      "ema20_pct": 1.59,
+      "ema50_pct": 3.07,
+      "high_52w": 660.45,
+      "low_52w": 543.17,
+      "up_pct_to_high": 0.0,
+      "down_pct_to_low": 17.8,
+      "rr": 0.0,
+      "status": "UPTREND"
     },
     "SENSEX": {
       "ticker": "^BSESN",
       "label": "S&P BSE Sensex (India)",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 78161.8125,
+      "chg1d_pct": -0.48,
+      "ema20_pct": 0.38,
+      "ema50_pct": 1.11,
+      "high_52w": 85762.0078,
+      "low_52w": 71947.5469,
+      "up_pct_to_high": 9.7,
+      "down_pct_to_low": 8.0,
+      "rr": 1.22,
+      "status": "UPTREND"
     },
     "KOSPI": {
       "ticker": "^KS11",
       "label": "KOSPI Composite (Korea)",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 6386.1299,
+      "chg1d_pct": 1.37,
+      "ema20_pct": -3.13,
+      "ema50_pct": -8.97,
+      "high_52w": 9114.5498,
+      "low_52w": 3130.0901,
+      "up_pct_to_high": 42.7,
+      "down_pct_to_low": 51.0,
+      "rr": 0.84,
+      "status": "DOWNTREND"
     },
     "HSI": {
       "ticker": "^HSI",
       "label": "Hang Seng Index (Hong Kong)",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 25773.5605,
+      "chg1d_pct": -0.63,
+      "ema20_pct": 1.52,
+      "ema50_pct": 2.8,
+      "high_52w": 27968.0898,
+      "low_52w": 22671.8594,
+      "up_pct_to_high": 8.5,
+      "down_pct_to_low": 12.0,
+      "rr": 0.71,
+      "status": "UPTREND"
     },
     "CSI300": {
       "ticker": "000300.SS",
       "label": "CSI 300 Index (China)",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 4709.1025,
+      "chg1d_pct": 3.97,
+      "ema20_pct": -1.62,
+      "ema50_pct": -2.12,
+      "high_52w": 5059.6602,
+      "low_52w": 4122.5098,
+      "up_pct_to_high": 7.4,
+      "down_pct_to_low": 12.5,
+      "rr": 0.6,
+      "status": "DOWNTREND"
     },
     "GOLD": {
       "ticker": "GLD",
       "label": "SPDR Gold Shares ETF",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 402.54,
+      "chg1d_pct": 1.02,
+      "ema20_pct": 5.62,
+      "ema50_pct": 4.23,
+      "high_52w": 495.9,
+      "low_52w": 305.27,
+      "up_pct_to_high": 23.2,
+      "down_pct_to_low": 24.2,
+      "rr": 0.96,
+      "status": "UPTREND"
     },
     "BTCUSD": {
       "ticker": "BTC-USD",
       "label": "Bitcoin / USD",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 64041.8984,
+      "chg1d_pct": -1.24,
+      "ema20_pct": -0.28,
+      "ema50_pct": -0.87,
+      "high_52w": 124752.5312,
+      "low_52w": 58558.8594,
+      "up_pct_to_high": 94.8,
+      "down_pct_to_low": 8.6,
+      "rr": 11.07,
+      "status": "DOWNTREND"
     },
     "ETHUSD": {
       "ticker": "ETH-USD",
       "label": "Ethereum / USD",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 1878.21,
+      "chg1d_pct": -1.6,
+      "ema20_pct": -0.3,
+      "ema50_pct": 0.91,
+      "high_52w": 4831.3486,
+      "low_52w": 1564.8167,
+      "up_pct_to_high": 157.2,
+      "down_pct_to_low": 16.7,
+      "rr": 9.42,
+      "status": "SIDEWAYS / MIXED"
     },
     "ESPO": {
       "ticker": "ESPO",
       "label": "VanEck Video Gaming & eSports ETF",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 99.6,
+      "chg1d_pct": 0.27,
+      "ema20_pct": 5.62,
+      "ema50_pct": 7.84,
+      "high_52w": 122.3,
+      "low_52w": 85.25,
+      "up_pct_to_high": 22.8,
+      "down_pct_to_low": 14.4,
+      "rr": 1.58,
+      "status": "UPTREND"
     },
     "PSEI": {
       "ticker": "PSEI.PS",
       "label": "Philippine Stock Exchange Index",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 6310.5098,
+      "chg1d_pct": -1.46,
+      "ema20_pct": 1.45,
+      "ema50_pct": 3.0,
+      "high_52w": 6625.46,
+      "low_52w": 5584.3501,
+      "up_pct_to_high": 5.0,
+      "down_pct_to_low": 11.5,
+      "rr": 0.43,
+      "status": "UPTREND"
     },
     "JILL": {
       "ticker": "JILL",
       "label": "J.Jill Inc (tentative - confirm mapping)",
-      "error": "float() argument must be a string or a real number, not 'Series'"
+      "price": 18.68,
+      "chg1d_pct": -1.27,
+      "ema20_pct": 5.21,
+      "ema50_pct": 14.46,
+      "high_52w": 19.21,
+      "low_52w": 11.0,
+      "up_pct_to_high": 2.8,
+      "down_pct_to_low": 41.1,
+      "rr": 0.07,
+      "status": "UPTREND"
     }
   }
 }
