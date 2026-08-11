@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thailand Fund Dashboards</title>
+<style>
+  :root{
+    --scb:#4F2D7F; --scb-d:#2d1a4a; --cyan:#00A3D9; --ink:#1a1a1a;
+    --rule:#e5e7eb; --bg:#f5f3fa;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%;background:var(--bg);
+    font-family:Arial,Helvetica,"Segoe UI","Noto Sans Thai",sans-serif;color:var(--ink);}
+  .site-nav-wrap{background:var(--scb-d);}
+  .site-nav{max-width:1240px;margin:0 auto;display:flex;gap:4px;flex-wrap:wrap;padding:0 24px;}
+  .site-nav a{display:inline-block;padding:14px 20px;color:#d9c9f0;text-decoration:none;
+    font-size:13.5px;font-weight:700;letter-spacing:0.02em;border-bottom:3px solid transparent;
+    cursor:pointer;transition:color .15s,border-color .15s;}
+  .site-nav a:hover{color:#fff;}
+  .site-nav a.active{color:#fff;border-bottom-color:var(--cyan);}
+  .frame-wrap{position:relative;width:100%;height:calc(100vh - 49px);}
+  iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;background:#fff;display:none;}
+  iframe.active{display:block;}
+  .loading{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;
+    align-items:center;justify-content:center;color:#999;font-size:13px;background:#fff;}
+
+  /* ── Market Signals tab (own data, own tab — not an iframe) ── */
+  #panel-signals{position:absolute;top:0;left:0;width:100%;height:100%;overflow-y:auto;
+    background:#fff;display:none;padding:20px 24px 56px;box-sizing:border-box;}
+  #panel-signals.active{display:block;}
+  .sig-wrap{max-width:1240px;margin:0 auto;}
+  .sig-head{margin-bottom:14px;}
+  .sig-head h1{font-size:20px;margin:0 0 4px;color:var(--ink);}
+  .sig-head p{font-size:12px;color:#666;margin:0;line-height:1.6;}
+  .sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:16px;}
+  .sig-card{border:1px solid #e5e7eb;border-radius:12px;padding:14px 16px;background:#fafafa;}
+  .sig-card-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+  .sig-ticker{font-weight:800;font-size:15px;color:var(--scb-d);}
+  .sig-price{font-family:monospace;font-size:14px;font-weight:700;}
+  .sig-label{font-size:11px;color:#888;margin-bottom:8px;}
+  .sig-status{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.03em;
+    padding:2px 8px;border-radius:100px;margin-bottom:8px;}
+  .sig-status.up{background:rgba(4,120,87,.12);color:#047857;}
+  .sig-status.down{background:rgba(220,38,38,.12);color:#dc2626;}
+  .sig-status.mixed{background:rgba(180,83,9,.12);color:#b45309;}
+  .sig-row{font-size:11.5px;color:#444;line-height:1.7;}
+  .sig-err{font-size:12px;color:#b45309;}
+  .sig-loading,.sig-error{color:#888;font-size:13px;padding:20px 0;}
+</style>
+</head>
+<body>
+  <div class="site-nav-wrap">
+    <nav class="site-nav">
+      <a data-target="frame-index" class="active">Risk vs Return</a>
+      <a data-target="frame-trend">Trend</a>
+      <a data-target="frame-growth">Growth Comparison</a>
+      <a data-target="panel-signals">Market Signals</a>
+    </nav>
+  </div>
+  <div class="frame-wrap">
+    <iframe id="frame-index" class="active" src="https://pippono9g-cloud.github.io/thailand-fund-risk-return/index.html" title="Risk vs Return"></iframe>
+    <iframe id="frame-trend" data-src="https://pippono9g-cloud.github.io/thailand-fund-risk-return/trend.html" title="Trend"></iframe>
+    <iframe id="frame-growth" data-src="https://pippono9g-cloud.github.io/thailand-fund-risk-return/growth.html" title="Growth Comparison"></iframe>
+
+    <div id="panel-signals">
+      <div class="sig-wrap">
+        <div class="sig-head">
+          <h1>Market Signals</h1>
+          <p id="sig-methodology">กำลังโหลด...</p>
+          <p id="sig-updated" style="margin-top:4px"></p>
+        </div>
+        <div id="sig-body"><div class="sig-loading">กำลังโหลดข้อมูล...</div></div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // ── EDIT THIS after you publish the signals repo via GitHub Pages ──
+  // e.g. 'https://<your-username>.github.io/<signals-repo>/data/signals.json'
+  var SIGNALS_URL = 'https://arnupapchomsri-cloud.github.io/market-signal/data/signals.json';
+
+  // Lazy-load each iframe only the first time its tab is opened, so the
+  // page doesn't have to pull all 3 multi-MB dashboards on first load.
+  document.querySelectorAll('.site-nav a').forEach(function(link){
+    link.addEventListener('click', function(){
+      var targetId = link.getAttribute('data-target');
+      document.querySelectorAll('.site-nav a').forEach(function(a){ a.classList.remove('active'); });
+      link.classList.add('active');
+      document.querySelectorAll('iframe, #panel-signals').forEach(function(f){ f.classList.remove('active'); });
+      var frame = document.getElementById(targetId);
+      if (frame.tagName === 'IFRAME' && !frame.getAttribute('src') && frame.getAttribute('data-src')) {
+        frame.setAttribute('src', frame.getAttribute('data-src'));
+      }
+      frame.classList.add('active');
+      if (targetId === 'panel-signals' && !window._sigLoaded) {
+        window._sigLoaded = true;
+        loadSignals();
+      }
+    });
+  });
+
+  function statusClass(status) {
+    if (status === 'UPTREND') return 'up';
+    if (status === 'DOWNTREND') return 'down';
+    return 'mixed';
+  }
+
+  function renderSignals(data) {
+    document.getElementById('sig-methodology').textContent = data.methodology || '';
+    var updated = data.generated_at_utc ? ('อัปเดตล่าสุด (UTC): ' + data.generated_at_utc) : '';
+    document.getElementById('sig-updated').textContent = updated;
+    var body = document.getElementById('sig-body');
+    var keys = Object.keys(data.signals || {});
+    if (!keys.length) { body.innerHTML = '<div class="sig-error">ไม่มีข้อมูล</div>'; return; }
+    body.innerHTML = '<div class="sig-grid">' + keys.map(function(k){
+      var s = data.signals[k];
+      if (s.error) {
+        return '<div class="sig-card"><div class="sig-ticker">' + k + '</div>' +
+          '<div class="sig-err">ดึงข้อมูลไม่สำเร็จ: ' + s.error + '</div></div>';
+      }
+      var cls = statusClass(s.status);
+      var chg = (s.chg1d_pct >= 0 ? '+' : '') + s.chg1d_pct + '%';
+      return '<div class="sig-card">' +
+        '<div class="sig-card-head"><span class="sig-ticker">' + k + '</span>' +
+        '<span class="sig-price">' + s.price + ' <span style="color:' + (s.chg1d_pct>=0?'#047857':'#dc2626') + '">' + chg + '</span></span></div>' +
+        '<div class="sig-label">' + (s.label || '') + '</div>' +
+        '<span class="sig-status ' + cls + '">' + s.status + '</span>' +
+        '<div class="sig-row">EMA20: ' + (s.ema20_pct>=0?'+':'') + s.ema20_pct + '% &nbsp;·&nbsp; EMA50: ' + (s.ema50_pct>=0?'+':'') + s.ema50_pct + '%</div>' +
+        '<div class="sig-row">52w High (ref TP): ' + s.high_52w + ' &nbsp;(เหลือ +' + s.up_pct_to_high + '%)</div>' +
+        '<div class="sig-row">52w Low (ref SL): ' + s.low_52w + ' &nbsp;(เหลือ -' + s.down_pct_to_low + '%)</div>' +
+        '<div class="sig-row">R:R: ' + (s.rr != null ? s.rr : '—') + '</div>' +
+        '</div>';
+    }).join('') + '</div>';
+  }
+
+  function loadSignals() {
+    if (SIGNALS_URL.indexOf('REPLACE_WITH') === 0) {
+      document.getElementById('sig-body').innerHTML =
+        '<div class="sig-error">ยังไม่ได้ตั้งค่า SIGNALS_URL ในไฟล์นี้ — แก้ตัวแปร SIGNALS_URL ในสคริปต์ด้านล่างของ hub.html ให้ชี้ไปที่ signals.json ของ repo ใหม่ก่อน</div>';
+      return;
+    }
+    fetch(SIGNALS_URL, {cache: 'no-store'})
+      .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(renderSignals)
+      .catch(function(err){
+        document.getElementById('sig-body').innerHTML =
+          '<div class="sig-error">โหลดข้อมูลไม่สำเร็จ: ' + err.message + '</div>';
+      });
+  }
+</script>
+</body>
+</html>
