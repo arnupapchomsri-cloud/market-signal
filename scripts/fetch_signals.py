@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 """
 Daily market signal fetcher.
+
+For each ticker in TICKERS: pulls ~1y of daily closes via yfinance,
+computes EMA20 / EMA50 (standard exponential moving average), 52-week
+high/low (used as TP/SL reference bands), remaining % to each band, and
+a simple R:R ratio. Writes everything to data/signals.json.
+
+Trend status is fully mechanical (no discretionary calls):
+  - price > EMA20 and price > EMA50            -> UPTREND
+  - price < EMA20 and price < EMA50            -> DOWNTREND
+  - anything else (mixed)                       -> SIDEWAYS / MIXED
 """
 
 import json
@@ -36,7 +46,16 @@ TICKERS = {
     "ETHUSD": ("ETH-USD",   "Ethereum / USD"),
     "ESPO":   ("ESPO",      "VanEck Video Gaming & eSports ETF"),
     "PSEI":   ("PSEI.PS",   "Philippine Stock Exchange Index"),
-    "JILL":   ("JILL",      "J.Jill Inc (tentative - confirm mapping)"),
+    "SET":    ("^SET.BK",   "SET Index (Thailand)"),
+    "VNI":    ("^VNINDEX.VN", "VN-Index (Vietnam)"),
+    "XLC":    ("XLC",       "Communication Services Select Sector SPDR"),
+    "XLRE":   ("XLRE",      "Real Estate Select Sector SPDR"),
+    "WTI":    ("CL=F",      "WTI Crude Oil Futures"),
+    "DXY":    ("DX-Y.NYB",  "US Dollar Index"),
+    "USDTHB": ("THB=X",     "USD / Thai Baht"),
+    "USDJPY": ("JPY=X",     "USD / Japanese Yen"),
+    "TLT":    ("TLT",       "iShares 20+ Year Treasury Bond ETF"),
+    "IEF":    ("IEF",       "iShares 7-10 Year Treasury Bond ETF"),
 }
 
 
