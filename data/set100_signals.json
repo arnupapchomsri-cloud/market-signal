@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-12T08:58:07+00:00",
+  "generated_at_utc": "2026-09-13T09:54:40+00:00",
   "methodology": "SET100 watchlist (~99 Thai stocks, .BK Yahoo Finance tickers). EMA20/EMA50 = % price is above/below the 20- and 50-day exponential moving average. TP/SL reference = 52-week high/low of daily closes. R:R = remaining upside % to 52w high divided by remaining downside % to 52w low. Status is mechanical: UPTREND if price is above both EMAs, DOWNTREND if below both, otherwise SIDEWAYS / MIXED. Ticker list compiled from public sources and may not match the official SET100 rebalance 100% at all times. Educational use only, not investment advice.",
   "signals": {
     "ADVANC": {
