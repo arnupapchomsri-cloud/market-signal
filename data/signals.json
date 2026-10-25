@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-24T09:14:15+00:00",
+  "generated_at_utc": "2026-10-25T09:31:07+00:00",
   "methodology": "EMA20/EMA50 = % price is above/below the 20- and 50-day exponential moving average. TP/SL reference = 52-week high/low of daily closes. R:R = remaining upside % to 52w high divided by remaining downside % to 52w low. Status is mechanical: UPTREND if price is above both EMAs, DOWNTREND if below both, otherwise SIDEWAYS / MIXED. Educational use only, not investment advice.",
   "signals": {
     "XLE": {
@@ -234,29 +234,29 @@
     "BTCUSD": {
       "ticker": "BTC-USD",
       "label": "Bitcoin / USD",
-      "price": 80546.3516,
-      "chg1d_pct": -0.65,
-      "ema20_pct": -2.05,
-      "ema50_pct": -0.29,
+      "price": 80113.0781,
+      "chg1d_pct": -0.84,
+      "ema20_pct": -2.36,
+      "ema50_pct": -0.81,
       "high_52w": 114472.4453,
       "low_52w": 58558.8594,
-      "up_pct_to_high": 42.1,
-      "down_pct_to_low": 27.3,
-      "rr": 1.54,
+      "up_pct_to_high": 42.9,
+      "down_pct_to_low": 26.9,
+      "rr": 1.59,
       "status": "DOWNTREND"
     },
     "ETHUSD": {
       "ticker": "ETH-USD",
       "label": "Ethereum / USD",
-      "price": 2363.6599,
-      "chg1d_pct": -0.86,
-      "ema20_pct": -4.09,
-      "ema50_pct": -4.25,
+      "price": 2324.0,
+      "chg1d_pct": -1.36,
+      "ema20_pct": -5.16,
+      "ema50_pct": -5.63,
       "high_52w": 4157.9893,
       "low_52w": 1564.8167,
-      "up_pct_to_high": 75.9,
-      "down_pct_to_low": 33.8,
-      "rr": 2.25,
+      "up_pct_to_high": 78.9,
+      "down_pct_to_low": 32.7,
+      "rr": 2.42,
       "status": "DOWNTREND"
     },
     "ESPO": {
