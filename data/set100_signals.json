@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-20T13:45:50+00:00",
+  "generated_at_utc": "2026-11-21T13:11:17+00:00",
   "methodology": "SET100 watchlist (~99 Thai stocks, .BK Yahoo Finance tickers). EMA20/EMA50 = % price is above/below the 20- and 50-day exponential moving average. TP/SL reference = 52-week high/low of daily closes. R:R = remaining upside % to 52w high divided by remaining downside % to 52w low. Status is mechanical: UPTREND if price is above both EMAs, DOWNTREND if below both, otherwise SIDEWAYS / MIXED. Ticker list compiled from public sources and may not match the official SET100 rebalance 100% at all times. Educational use only, not investment advice.",
   "signals": {
     "ADVANC": {
@@ -803,13 +803,13 @@
     "THCOM": {
       "ticker": "THCOM.BK",
       "label": "Thaicom",
-      "price": 8.32,
-      "chg1d_pct": 0.0,
-      "ema20_pct": -5.53,
-      "ema50_pct": -11.05,
+      "price": 8.28,
+      "chg1d_pct": -0.48,
+      "ema20_pct": -5.45,
+      "ema50_pct": -11.08,
       "high_52w": 11.7,
-      "low_52w": 8.32,
-      "up_pct_to_high": 40.6,
+      "low_52w": 8.28,
+      "up_pct_to_high": 41.3,
       "down_pct_to_low": 0.0,
       "rr": null,
       "status": "DOWNTREND"
